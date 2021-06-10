@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: echo-gebi-link
+  annotations:
+    kubernetes.io/ingress.class: kong
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - secretName: echo-gebi-link
+    hosts:
+    - echo.gebi.link
+  rules:
+  - host: echo.gebi.link
+    http:
+      paths:
+      - path: /foo
+        backend:
+          serviceName: echo
+          servicePort: 80

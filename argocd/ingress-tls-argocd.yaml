@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: argocd-gebi-link
+  namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: kong
+    kubernetes.io/tls-acme: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - secretName: argocd-gebi-link
+    hosts:
+    - argocd.gebi.link
+  rules:
+  - host: argocd.gebi.link
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: argocd-server
+          servicePort: 80
