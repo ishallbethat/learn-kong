@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: spinnaker-gebi-link
+  name: spinnaker-gate-gebi-link
   namespace: spinnaker
   annotations:
     kubernetes.io/ingress.class: kong
@@ -9,14 +9,14 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
-  - secretName: spinnaker-gebi-link
+  - secretName: spinnaker-gate-gebi-link
     hosts:
-    - spinnaker.gebi.link
+    - spinnaker-gate.gebi.link
   rules:
-  - host: spinnaker.gebi.link
+  - host: spinnaker-gate.gebi.link
     http:
       paths:
       - path: /
         backend:
-          serviceName: spin-deck
-          servicePort: 9000
+          serviceName: spin-gate
+          servicePort: 8084
