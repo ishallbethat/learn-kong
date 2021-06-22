@@ -4,9 +4,12 @@ metadata:
   name: argocd-gebi-link
   namespace: argocd
   annotations:
+    konghq.com/protocols: "http,https"
+    konghq.com/override: https-upstream
     kubernetes.io/ingress.class: kong
     kubernetes.io/tls-acme: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
+    konghq.com/https-redirect-status-code: "301"
 spec:
   tls:
   - secretName: argocd-gebi-link
@@ -17,6 +20,7 @@ spec:
     http:
       paths:
       - path: /
+        pathType: Prefix
         backend:
           serviceName: argocd-server
           servicePort: 80

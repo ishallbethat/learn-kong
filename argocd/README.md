@@ -1,3 +1,6 @@
-### argocd tls
-出现多次 too many redirects 的问题在于： https://github.com/argoproj/argo-cd/issues/2953
-需要 --insecure， 采用 insecure 方式。
+## Troubleshootting
+### too many redirects
+https://discuss.konghq.com/t/ingress-for-argocd/8515/3
+```
+kubectl patch svc argo-server --patch "$(cat patch.yaml)" -n argo
+```
