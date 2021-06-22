@@ -2,7 +2,7 @@ apiVersion: configuration.konghq.com/v1
 kind: KongIngress
 metadata:
   name: https-upstream
-  namespace: argo
+  namespace: argocd
   annotations:
     kubernetes.io/ingress.class: "kong"
 proxy:

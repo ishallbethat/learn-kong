@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: argo-workflow-gebi-link
-  namespace: argo
+  namespace: argocd
   annotations:
     konghq.com/protocols: https
     konghq.com/override: https-upstream

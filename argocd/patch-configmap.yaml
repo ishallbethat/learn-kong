@@ -1,0 +1,17 @@
+data:
+  url: https://argocd.gebi.link
+  dex.config: |
+    connectors:
+      # GitHub example
+      - type: github
+        id: github
+        name: GitHub
+        config:
+          clientID: xxx
+          clientSecret: xxx
+    staticClients:
+      - id: argo-workflows-sso
+        name: Argo Workflow
+        redirectURIs:
+          - https://argo-workflow.gebi.link/oauth2/callback
+        secretEnv: ARGO_WORKFLOWS_SSO_CLIENT_SECRET
